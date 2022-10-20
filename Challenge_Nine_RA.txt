@@ -1,0 +1,47 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int t;
+    cin>>t;
+    for(int i=1;i<=t;i++)
+    {
+        string a;
+        cin>>a;
+        int sum=0;
+        for(int j=0;j<a.size();j++)
+        {
+            sum+=(a[j]-'0');
+        }
+        int rema=sum%9;
+        if(rema==0)
+        {
+            string ans="";
+            ans.push_back(a[0]);
+            ans.push_back('0');
+            for(int r=1;r<a.size();r++)
+            ans.push_back(a[r]);
+            cout<<"Case #"<<i<<": "<<ans<<endl;
+        }
+        else
+        {
+            rema=9-rema;
+            char re=(rema+'0');
+            string ans="";
+            int r;
+            for(r=0;r<a.size();r++)
+            {
+                if(a[r]>re)
+                break;
+                ans.push_back(a[r]);
+            }
+            ans.push_back(re);
+            for(;r<a.size();r++)
+            {
+                ans.push_back(a[r]);
+            }
+            cout<<"Case #"<<i<<": "<<ans<<endl;
+        }
+    }
+    return 0;
+}
