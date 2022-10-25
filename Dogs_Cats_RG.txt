@@ -1,0 +1,56 @@
+#include<bits/stdc++.h>
+using namespace std;
+void print(int i,string ans)
+{
+    cout<<"Case #"<<i<<": "<<ans<<endl;
+}
+int main()
+{
+    int t;
+    cin>>t;
+    for(int i=1;i<=t;i++)
+    {
+        long n,d,c,m;
+        cin>>n>>d>>c>>m;
+        string s;
+        cin>>s;
+        int j=0,r=0;
+        while(s[j]!='\0')
+        {
+            if(s[j]=='D')
+            r++;
+            j++;
+        }
+        if(r>d)
+        print(i,"NO");
+        else
+        {
+            j=0;
+            while(s[j]!='\0' && c>=0)
+            {
+                if(s[j]=='C')
+                c--;
+                else if(s[j]=='D')
+                c+=m;
+                j++;
+            }
+            if(j==n)
+            print(i,"YES");
+            else
+            {
+                int t=0;
+                while(s[j]!='\0')
+                {
+                    if(s[j]=='D')
+                    t++;
+                    j++;
+                }
+                if(t>0)
+                print(i,"NO");
+                else
+                print(i,"YES");
+            }
+        }
+    }
+    return 0;
+}

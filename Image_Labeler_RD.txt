@@ -1,0 +1,44 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int t;
+    cin>>t;
+    for(int l=1;l<=t;l++)
+    {
+        int n,m;
+        cin>>n>>m;
+        vector<int> v(n);
+        for(int i=0;i<n;i++) cin>>v[i];
+        sort(begin(v),end(v));
+        double ans=0.0;
+        if(m==1)
+        {
+            if(n%2==0)
+            {
+                ans= (1.0*v[n/2]+v[n/2-1])/2;
+            }
+            else
+            ans=(1.0)*v[n/2];
+        }
+        else
+        {
+            int i=n-1;
+            while(m!=1)
+            {
+                ans+=v[i];
+                i--;
+                m--;
+            }
+            n=i+1;
+            if(n%2==0)
+            {
+                ans+=(1.0*v[n/2]+v[n/2-1])/2;
+            }
+            else
+            ans+=(1.0)*v[n/2];
+        }
+        cout<<"Case #"<<l<<": "<<fixed<<setprecision(1)<<ans<<endl;
+    }
+    return 0;
+}
